@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Game.init({
-    id: DataTypes.BIGINT,
+    id: {
+      type: DataTypes.BIGINT, 
+      primaryKey: true,
+    },
     name: DataTypes.STRING,
     description: DataTypes.STRING
   }, {
