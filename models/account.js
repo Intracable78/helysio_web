@@ -20,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Account.init({
-    id: DataTypes.BIGINT,
+    id: {
+      type: DataTypes.BIGINT,
+      primaryKey: true
+    },
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     id_rank: DataTypes.BIGINT

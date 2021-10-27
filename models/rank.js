@@ -15,7 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Rank.init({
-    id: DataTypes.BIGINT,
+    id: {
+      type: DataTypes.BIGINT,
+      primaryKey: true
+    },
     title: DataTypes.STRING
   }, {
     sequelize,
