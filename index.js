@@ -8,6 +8,8 @@ const auth = require('./middleware/auth');
 
 app.use(express.json());
 
+
+// route de test pour voir si le token jwt est valid 
 app.get('/me', auth, (req, res) => {
   res.send('Hello World!')
 })
