@@ -1,6 +1,5 @@
 const express = require('express');
 const router  = express.Router();
-const models = require('../models');
 const db = require('../models/index');
 const User = require("../models/account")(db.sequelize, db.Sequelize.DataTypes);
 const bcrypt = require('bcrypt');
@@ -18,7 +17,7 @@ router.post('/', async (req, res) => {
     let password = req.body.password;
     
     if(email == null || password == null) {
-        return res.status(400).json('Error missing parameters');
+        return res.status(400).json('error :  missing parameters');
     }
         
     if(!EMAIL_REGEX.test(email)) {
@@ -66,10 +65,6 @@ router.post('/', async (req, res) => {
     if(userFind instanceof User) {
         return res.status(404).json('user already exist !')
     }
-
-    
-
-     
 
 })
 
