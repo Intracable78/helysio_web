@@ -29,4 +29,17 @@ router.get('/',async (req, res) => {
     return res.status(200).send(allCategories)
 })
 
+router.get('/:id',async (req, res) => {
+    Console.log("/category/" + req.params.id)
+
+    const id = req.params.id
+
+    if (!id)
+        return res.status(400).send('Missing parameter')
+
+    let category = await categories.findByPk(id)
+
+    return res.status(200).send(category)
+})
+
 module.exports = router;
