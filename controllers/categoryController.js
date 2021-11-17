@@ -8,12 +8,14 @@ const categories = require("../models/category")(db.sequelize, db.Sequelize.Data
 router.post('/', async (req, res) => {
     console.log("category/")
 
+    const name  = req.body.name
     const types = req.body.types
 
-    if (!types)
+    if (!types || !name)
         return res.status(400).send('Missing parameter')
 
     const category = {
+        name: name,
         types: types
     }
 
