@@ -7,6 +7,7 @@ const auth = require('./middleware/auth');
 const shopController = require('./Controllers/shopController');
 const postController = require('./controllers/postController.js');
 const categoryController = require('./controllers/categoryController.js');
+const gameController = require('./controllers/gameController.js');
 app.use(express.json());
 
 app.get('/me', auth, (req, res) => {
@@ -18,6 +19,7 @@ app.use('/login', loginController);
 app.use('/post',postController);
 app.use('/category',categoryController)
 app.use('/shop', shopController);
+app.use('/game', gameController);
 
 
 app.listen(port, () => {
