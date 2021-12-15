@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   Post.init({
     id: {
-      type: DataTypes.BIGINT, 
-      primaryKey: true,
+      type: DataTypes.BIGINT,
+      primaryKey: true
     },
     title: DataTypes.STRING,
     content: DataTypes.STRING,

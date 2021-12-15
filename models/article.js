@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   Article.init({
     id: {
-      type: DataTypes.BIGINT, 
-      primaryKey: true,
+      type: DataTypes.BIGINT,
+      primaryKey: true
     },
     description: DataTypes.STRING,
     id_category: DataTypes.BIGINT

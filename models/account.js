@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      /*models.Account.belongsTo(models.Rank, {
+      models.Account.belongsTo(models.Rank, {
         foreignKey: {
           allowNull: false,
         }
-      })*/
+      })
 
     }
   };
@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BIGINT,
       primaryKey: true
     },
-      
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     id_rank: DataTypes.BIGINT
@@ -34,4 +33,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Account;
 };
-

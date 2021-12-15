@@ -1,24 +1,25 @@
 const express = require('express')
 const registerController = require('./Controllers/registerController');
 const loginController = require('./Controllers/loginController');
-const shopController = require('./Controllers/shopController');
 const app = express()
 const port = 3000
 const auth = require('./middleware/auth');
-
-
+const shopController = require('./Controllers/shopController');
+const postController = require('./controllers/postController.js');
+const categoryController = require('./controllers/categoryController.js');
+const gameController = require('./controllers/gameController.js');
 app.use(express.json());
 
-
-// route de test pour voir si le token jwt est valid 
 app.get('/me', auth, (req, res) => {
   res.send('Hello World!')
 })
 
 app.use('/register', registerController);
 app.use('/login', loginController);
+app.use('/post',postController);
+app.use('/category',categoryController)
 app.use('/shop', shopController);
-
+app.use('/game', gameController);
 
 
 app.listen(port, () => {
