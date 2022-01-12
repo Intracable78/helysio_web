@@ -5,9 +5,9 @@ const db = require('../models/index');
 const Console = require("console");
 const posts = require("../models/post")(db.sequelize, db.Sequelize.DataTypes);
 
-router.post('/', async (req, res) => {
-    console.log("/")
 
+
+router.post('/', async (req, res) => {
     const title = req.body.title
     const content = req.body.content
     const id_category = req.body.id_category
@@ -27,15 +27,15 @@ router.post('/', async (req, res) => {
     return res.status(200).send(postCreated);
 })
 
-router.get('/',async (req, res) => {
+router.get('/', async (req, res) => {
     Console.log("/post")
     let allPosts = await posts.findAll()
 
     return res.status(200).send(allPosts)
 })
 
-router.get('/:postId',async (req, res) => {
-    Console.log("/post/",req.params.postId)
+router.get('/:postId', async (req, res) => {
+    Console.log("/post/", req.params.postId)
     let singlePost = await posts.findByPk(req.params.postId)
 
     if (!singlePost)

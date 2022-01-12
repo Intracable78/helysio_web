@@ -3,13 +3,14 @@ var router = express.Router();
 
 const db = require('../models/index');
 const Console = require("console");
-const {where} = require("sequelize");
 const categories = require("../models/category")(db.sequelize, db.Sequelize.DataTypes);
+
+/*
 
 router.post('/', async (req, res) => {
     console.log("category/")
 
-    const name  = req.body.name
+    const name = req.body.name
     const types = req.body.types
 
     if (!types || !name)
@@ -25,14 +26,16 @@ router.post('/', async (req, res) => {
     return res.status(200).send(categoryCreated);
 })
 
-router.get('/:type',async (req, res) => {
+*/
+
+router.get('/:type', async (req, res) => {
     Console.log("/category/" + req.params.type)
 
     const type = req.params.type
 
     let allCategories = await categories.findAll({
         where: {
-            types:type
+            types: type
         }
     })
 
@@ -42,7 +45,7 @@ router.get('/:type',async (req, res) => {
     return res.status(200).send(allCategories)
 })
 
-router.get('/:id',async (req, res) => {
+router.get('/:id', async (req, res) => {
     Console.log("/category/" + req.params.id)
 
     const id = req.params.id

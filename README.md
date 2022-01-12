@@ -1,0 +1,4 @@
+- Après avoir dl le projet, faire les commandes suivantes :
+- npm i --save
+- nodemon i --save
+- npx sequelize-cli db:migrate

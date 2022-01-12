@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 const db = require('../models/index');
-const Console = require("console");
 const games = require("../models/game")(db.sequelize, db.Sequelize.DataTypes);
+
+/*
 
 router.post('/', async (req, res) => {
     const name  = req.body.name
@@ -22,13 +23,15 @@ router.post('/', async (req, res) => {
     return res.status(200).send(gameCreated);
 })
 
-router.get('/',async (req, res) => {
+*/
+
+router.get('/', async (req, res) => {
     let allGames = await games.findAll()
 
     return res.status(200).send(allGames)
 })
 
-router.get('/:gameId',async (req, res) => {
+router.get('/:gameId', async (req, res) => {
 
     let game = await games.findByPk(req.params.gameId)
 
