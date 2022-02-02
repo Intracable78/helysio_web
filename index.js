@@ -12,6 +12,7 @@ const adminGameController = require('./Controllers/Admin/adminGameController');
 const adminPostController = require('./Controllers/Admin/adminPostController');
 const adminShopController = require('./Controllers/Admin/adminShopController');
 const adminUserController = require('./Controllers/Admin/adminUserController');
+const paypalController = require('./Controllers/Payment/paypalController');
 
 const isAdmin = require('./middleware/isAdmin');
 
@@ -33,6 +34,9 @@ app.use('admin/post', isAdmin, adminPostController);
 app.use('admin/game', isAdmin, adminGameController);
 app.use('admin/shop', isAdmin, adminShopController);
 app.use('/admin/user', isAdmin, adminUserController);
+
+//payement routes
+app.use('/payment', paypalController);
 
 
 app.listen(port, () => {
