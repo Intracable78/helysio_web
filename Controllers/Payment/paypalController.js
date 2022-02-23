@@ -4,19 +4,20 @@ var router = express.Router();
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
-    'client_id': '####yourclientid######',
-    'client_secret': '####yourclientsecret#####'
+    'client_id': 'ATfTLR0TyDZ3jqc16KryCZaKFY7Zx-gMIgxwl7VOVZ1Afhoy9UdrHy4CfwVj-Ih7Wp132pZ1ppeTD_GJ',
+    'client_secret': 'ELXKxwOLoUSuMrY_vILw4FHsOb6PKEiQjY57JKDVQXl9vlnPo3MaRce3C_6O6uo41wTSzvybi4WzP69l'
 });
 const app = express();
-router.get('/paypal', (req, res) => {
+router.post('/', (req, res) => {
+    console.log('here')
     const create_payment_json = {
         "intent": "sale",
         "payer": {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "http://localhost:3000/success",
-            "cancel_url": "http://localhost:3000/cancel"
+            "return_url": "http://localhost:3000/payment/success",
+            "cancel_url": "http://localhost:3000/payment/cancel"
         },
         "transactions": [{
             "item_list": {
@@ -49,7 +50,7 @@ router.get('/paypal', (req, res) => {
     });
 });
 
-router.get('paypal/success', (req, res) => {
+router.get('/success', (req, res) => {
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;
 
@@ -76,8 +77,6 @@ router.get('paypal/success', (req, res) => {
     });
 });
 
-router.get('paypal/cancel', (req, res) => res.send('Cancelled'));
-
-app.listen(PORT, () => console.log(`Server Started on ${PORT}`));
+router.get('/cancel', (req, res) => res.send('Cancelled'));
 
 module.exports = router;

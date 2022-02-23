@@ -17,6 +17,7 @@ const paypalController = require('./Controllers/Payment/paypalController');
 const isAdmin = require('./middleware/isAdmin');
 
 app.use(express.json());
+app.set('view engine', 'ejs');
 
 //user routes
 
@@ -37,6 +38,7 @@ app.use('/admin/user', isAdmin, adminUserController);
 
 //payement routes
 app.use('/payment', paypalController);
+app.get('/', (req, res) => res.render('index'));
 
 
 app.listen(port, () => {
